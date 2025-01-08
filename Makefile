@@ -8,9 +8,10 @@
 PYTHON = python
 TEST_RUNNER = pytest
 TEST_ARGS = -v
+TEST_DIR = tests
 
 # Find all Python test files recursively
-TEST_FILES = $(shell dir /s /b test_*.py 2>nul)
+TEST_FILES = $(shell dir /s /b $(TEST_DIR)\test_*.py 2>nul)
 
 help:
 	@echo Available commands:
@@ -19,7 +20,7 @@ help:
 	@echo   make help  - Show this help message
 
 test:
-	$(PYTHON) -m $(TEST_RUNNER) $(TEST_ARGS) $(TEST_FILES)
+	$(PYTHON) -m $(TEST_RUNNER) $(TEST_ARGS) $(TEST_DIR)
 
 clean:
 	@echo Cleaning Python cache files...
